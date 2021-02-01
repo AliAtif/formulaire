@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+
+class App extends React.Component {
+
+  constructor(){
+
+    super();
+    this.state = {
+      email: '',
+      password: '',
+    };
+
+  };
+
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value });
+  };
+  
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  render() {
+    return (
+    
+      <div className="container-fluid">
+        <div className="row">
+         
+
+         <div className ="col-sm-3 col-6">
+            <h1>Login</h1>
+                        
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                 Email address
+                 <input type="email" placeholder="Enter mail ..." value={this.state.email} onChange={this.handleEmailChange}/>
+              </label>
+
+              <label>
+                 Passwword
+                 <input type="password" placeholder="Enter password ..." value={this.state.password} onChange={this.handlePasswordChange}/>
+              </label> 
+                 <div>
+                  <input type="checkbox" ></input>
+                  <label>Remember me</label>
+                 </div>
+
+                 <div>
+                    <button type="submit">Submit</button>
+                 </div>
+  
+            </form>
+
+          </div>
+
+        </div>
+        
+      </div>
+    );
+  }
+};
 
 export default App;
